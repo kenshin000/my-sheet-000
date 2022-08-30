@@ -1,26 +1,54 @@
-<h2>Log in</h2>
+ 
+  <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    
+    <!-- Custom styles for this template -->
+    <link href="/assets/user.scss" rel="stylesheet">
+  </head>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <body class="text-center">
+    
+<main class="form-signin">
+  <form>
+    <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
+    <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">ログイン</h1>
+
+    <div class="form-floating">
+      <input type="email" class="form-control" id="email" placeholder="name@example.com">
+      <label for="email">Email address</label>
     </div>
-  <% end %>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="password" placeholder="Password">
+      <label for="password">Password</label>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> ログイン状態を保存する
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+      <% end %>
+  </form>
+</main>
 
-<%= render "devise/shared/links" %>
+
+    
+  </body>
+
