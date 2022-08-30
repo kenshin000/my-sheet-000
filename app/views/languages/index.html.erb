@@ -9,6 +9,10 @@
         user-select: none;
       }
 
+      .btn{
+        
+      }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -30,8 +34,13 @@
         <h1 class="fw-light">全てのチートシート</h1>
         <p class="lead text-muted">全てのチートシートを閲覧できます。チートシート、コメントの投稿にはユーザー登録が必要です。</p><%# ログイン時は消す%>
         <p>
-          <a href="#" class="btn btn-primary my-2">ログイン</a>  <%# もしくはマイページ%>
-          <a href="#" class="btn btn-secondary my-2">新規登録</a>
+        <% if user_signed_in? %>
+      <li><%= link_to current_user.nickname, "#", class: "user-nickname" %> </li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-primary my-2" %> </li>
+        <% else %>
+      <li><%= link_to 'ログイン',new_user_session_path, class: "btn btn-primary my-2" %></li>
+      <li><%= link_to '新規登録',new_user_registration_path, class: "btn btn-primary my-2" %></li>
+      <% end %>
         </p>
       </div>
     </div>
