@@ -1,36 +1,38 @@
 
 
-
-<%= form_with model: @user, url: user_registration_path,  class: 'registration-main', local: true do |f| %>
-<div class='form-wrap'>
-  <div class='form-header'>
-    <h1 class='form-header-text'>
-      会員情報入力
-    </h1>
-  </div>
+ <body class="text-center">
 
 
+
+
+    
+<main class="form-signin">
+  
+    <%= form_with model: @user, url: user_registration_path,  class: 'registration-main', local: true do |f| %>
+    <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">新規登録</h1>
 
   <div class="form-group">
-    <div class='form-text-wrap'>
+    <div class='form-text-wrap '>
       <label class="form-text">ニックネーム</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
+    <%= f.text_area :nickname, class:"input-default form-control", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
   </div>
-  <div class="form-group">
+
+   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">メールアドレス</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+    <%= f.email_field :email, class:"input-default form-control", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">パスワード</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
+    <%= f.password_field :password, class:"input-default form-control" , id:"password", placeholder:"6文字以上の半角英数字" %>
     <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
   </div>
   <div class="form-group">
@@ -38,11 +40,17 @@
       <label class="form-text">パスワード(確認)</label>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
+    <%= f.password_field :password_confirmation, class:"input-default form-control", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
   </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+      <a href="/" class="btn btn-outline-secondary"> トップページに戻る</a>
+      <% end %> 
+
+</main>
 
 
 
-  
-<% end %>
+    
+  </body>
 
