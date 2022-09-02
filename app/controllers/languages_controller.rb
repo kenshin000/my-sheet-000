@@ -1,6 +1,7 @@
 class LanguagesController < ApplicationController
 
   def index
+    @languages = Language.order('created_at DESC')
   end
 
   def new
@@ -16,6 +17,11 @@ class LanguagesController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @language = Language.find(params[:id])
+  end
+
 
 
   private
