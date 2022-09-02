@@ -27,30 +27,36 @@
 
     
 <main class="form-signin">
-  <form>
     <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
     <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">ログイン</h1>
 
-    <div class="form-floating">
-      <input type="email" class="form-control" id="email" placeholder="name@example.com">
-      <label for="email">Email address</label>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">メールアドレス</label>
+      <span class="indispensable">必須</span>
     </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="password" placeholder="Password">
-      <label for="password">Password</label>
+    <%= f.email_field :email, class:" form-control", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">パスワード</label>
+      <span class="indispensable">必須</span>
     </div>
+    <%= f.password_field :password, class:"form-control", id:"password", placeholder:"" %>
+  </div>
 
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> ログイン状態を保存する
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
+    <div class='login-btn'>
+    <%= f.submit "ログイン" ,class:"w-100 btn btn-lg btn-primary" %>
+  </div>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
       <a href="/" class="btn btn-outline-secondary"> トップページに戻る</a>
       <% end %> 
-  </form>
 </main>
 
 
