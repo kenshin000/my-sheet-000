@@ -24,18 +24,18 @@
 <%= render "shared/header" %>
 <main>
 
-  <section class="py-5 text-center container">
+  <section class="py-5 container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light">全てのチートシート</h1>
         <p class="lead text-muted">全てのチートシートを閲覧できます。チートシート、コメントの投稿にはユーザー登録が必要です。</p><%# ログイン時は消す%>
         <p>
         <% if user_signed_in? %>
-  <li><%= link_to 'マイページ', root_path, class: "btn  btn-outline-primary my-2" %> </li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn  btn-outline-primary " %> </li>
+        <%= link_to 'マイページ', root_path, class: "btn  btn-outline-primary my-2" %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn  btn-outline-primary " %>
         <% else %>
-      <li><%= link_to 'ログイン',new_user_session_path, class: "btn  btn-outline-primary my-2" %></li>
-      <li><%= link_to '新規登録',new_user_registration_path, class: "btn  btn-outline-primary my-2" %></li>
+        <%= link_to 'ログイン',new_user_session_path, class: "btn  btn-outline-primary my-2" %>
+        <%= link_to '新規登録',new_user_registration_path, class: "btn  btn-outline-primary my-2" %>
       <% end %>
         </p>
       </div>

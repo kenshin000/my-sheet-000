@@ -1,7 +1,7 @@
 class LanguagesController < ApplicationController
 
   def index
-    @languages = Language.order('created_at DESC')
+    @languages = Language.all
   end
 
   def new
@@ -9,7 +9,6 @@ class LanguagesController < ApplicationController
   end
 
   def create
-    binding.pry
     @language = Language.new(language_params)
     if @language.save
       redirect_to root_path
@@ -19,6 +18,7 @@ class LanguagesController < ApplicationController
   end
 
   def show
+    @languages = Language.order('created_at DESC')
     @language = Language.find(params[:id])
   end
 
