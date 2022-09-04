@@ -14,9 +14,9 @@ class PostsController < ApplicationController
     @post = Post.create(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to root_path
+      redirect_to language_posts_path
     else
-      redirect_to root_path
+      render :new
     end
   end
 
