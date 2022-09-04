@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.order('created_at DESC')
+    @posts = Post.all
     @language = Language.find(params[:language_id])
   end
 
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.order('created_at DESC')
+    @posts = Post.all
     @post = Post.find(params[:id])
   end
 
