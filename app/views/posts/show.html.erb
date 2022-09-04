@@ -1,1 +1,18 @@
-hello
+<%= render "shared/header" %>
+
+<div class="post_body album py-5 bg-light">
+  <div class= "post_main">
+    <div class="mb-3">
+  <p for="exampleFormControlInput1" class="form-label title_label">タイトル</p>
+  <p for="exampleFormControlInput1" class="post_title title_label"><%= @post.title %></p>
+  </div>
+
+<div class="mb-3">
+  <p for="exampleFormControlTextarea1" class="form-label title_label">本文</p>
+  <div for="exampleFormControlInput1" class="post_text"><%= @post.text %></div>
+</div>
+  </div>
+</div>
+
+<%= link_to '戻る',language_posts_path, class:"btn btn-outline-dark" %>
+<%= render "shared/footer" %>
