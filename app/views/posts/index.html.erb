@@ -1,4 +1,4 @@
-<head>
+  <head>
 
     <style>
       .bd-placeholder-img {
@@ -16,34 +16,32 @@
       }
     </style>
 
-    
+
   </head>
   <body>
-    
+
 
 <%= render "shared/header" %>
 <main>
 
-  <section class="py-5 text-center container">
+  <section class="py-5 container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light "><%= @language.name %></h1>
-        <p class="lead text-muted">全てのチートシートを閲覧できます。チートシート、コメントの投稿にはユーザー登録が必要です。</p>
-        <p>
-  <li><%= link_to 'マイページ', root_path, class: "btn  btn-outline-primary my-2" %> </li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn  btn-outline-primary " %> </li>
+        <h1 class="fw-light"><%= @language.name %></h1>
         </p>
       </div>
-        <%= link_to 'チートシートの追加',new_language_path, class:"btn btn-outline-success btn-lg" %>
+        <%= link_to 'チートシートの追加',new_language_post_path, class:"btn btn-outline-success btn-lg" %>
     </div>
   </section>
 
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
 
-    
+
+  <% @posts.each do |post| %>
+    <div class="col">
+      <%= link_to language_posts_path(post.id) do %>
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
             <rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
@@ -51,16 +49,17 @@
               <p class="card-text"></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">投稿ユーザーページ</button>
+                  <%= link_to '詳細',new_language_path, class:"btn btn-sm btn-outline-secondary", type:"button" %>
+                  <%= link_to  '投稿者のマイページ',"/users/#{current_user.id}", class:"btn btn-sm btn-outline-secondary", type:"button" %>
                 </div>
-                <small class="text-muted">投稿日</small>
+                <small class="text-muted"><%=  %></small>
               </div>
             </div>
           </div>
-   
+      <% end %>
+    </div>
+  <% end %>
 
-        </div>
       </div>
     </div>
   </div>
@@ -69,7 +68,5 @@
 
 <%= render "shared/footer" %>
 
-    
 
-      
   </body>
