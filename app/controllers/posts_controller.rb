@@ -21,7 +21,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    language = Language.find(params[:language_id])
+    @post = Post.find(params[:id])
+    @post.destroy
+  end
+
   def show
+    @language = Language.find(params[:language_id])
     @posts = Post.all
     @post = Post.find(params[:id])
   end
