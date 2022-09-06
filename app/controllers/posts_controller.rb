@@ -2,11 +2,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
   before_action :set_post, only: [:edit, :show, :update, :destroy]
   before_action :set_language, only: [:index, :new, :edit, :show, :create, :destroy]
+  before_action :limit_user, only: [:edit, :destroy,]
   def index
     @posts = Post.all
   end
 
   def new
+    redirect_to root_path unless current_user.id == @language.user_id
     @post = Post.new
   end
 
@@ -49,5 +51,8 @@ class PostsController < ApplicationController
     @language = Language.find(params[:language_id])
   end
 
+  def limit_user
+    redirect_to root_path unless current_user.id == @post.user_id
+  end
 
 end

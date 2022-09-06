@@ -1,21 +1,30 @@
+
 <%= render "shared/header" %>
 
 <div class="post_body album py-5 bg-light">
-  <div class= "post_main">
+
+    <div class= "post_main">
+
     <div class="mb-3">
-  <p for="exampleFormControlInput1" class="form-label title_label">タイトル</p>
-  <p for="exampleFormControlInput1" class="post_title title_label"><%=safe_join(@post.title.split("\n"),tag(:br))%></p>
+      <p for="exampleFormControlInput1" class="form-label title_label">タイトル</p>
+      <p for="exampleFormControlInput1" class="post_title title_label"><%=safe_join(@post.title.split("\n"),tag(:br))%></p>
   </div>
 
-<div class="mb-3">
-  <p for="exampleFormControlTextarea1" class="form-label title_label">本文</p>
-  <div for="exampleFormControlInput1" class="post_text"><%=safe_join(@post.text.split("\n"),tag(:br))%></div>
-</div>
-  </div>
+    <div class="mb-3">
+      <p for="exampleFormControlTextarea1" class="form-label title_label">本文</p>
+      <div for="exampleFormControlInput1" class="post_text"><%=safe_join(@post.text.split("\n"),tag(:br))%></div>
+    </div>
+
+    </div>
+
 </div>
 
-<%= link_to '戻る',language_posts_path, class:"btn btn-outline-dark" %>
-<div class="pull-right">
-<%= link_to '編集',edit_language_post_path(@language.id, @post.id), class:"btn btn-outline-dark " %>
-</div>
+  <%= link_to '戻る',language_posts_path, class:"btn btn-outline-dark" %>
+    <div class="pull-right">
+  <% if current_user.id == @post.user_id %>
+    <%= link_to '編集',edit_language_post_path(@language.id, @post.id), class:"btn btn-outline-dark " %>
+  <% end %>
+  </div>
+
+
 <%= render "shared/footer" %>
