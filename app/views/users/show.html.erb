@@ -28,7 +28,7 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light "><%= @nickname %>のマイページ</h1>
-        <p class="lead text-muted">全てのチートシートを閲覧できます。チートシート、コメントの投稿にはユーザー登録が必要です。</p>
+        <p class="lead text-muted"><%= @nickname %>さんの投稿一覧</p>
       </div>
         
     </div>
@@ -49,8 +49,6 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">詳細</button>
-
-                  <button type="button" class="btn btn-sm btn-outline-secondary"><%= language.user.nickname %>のマイページ</button>
                 </div>
                 <small class="text-muted"><%=  %></small>
               </div>

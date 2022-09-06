@@ -15,6 +15,7 @@
 </div>
 
 <%= link_to '戻る',language_posts_path, class:"btn btn-outline-dark" %>
-<%= link_to '編集',language_posts_path, class:"btn btn-outline-dark" %>
-<%= link_to '削除',language_post_path(@language.id, @post.id), method: :delete,data: {confirm: "投稿を削除しますか？"}, class:"btn btn-outline-dark" %>
+<div class="pull-right">
+<%= link_to '編集',edit_language_post_path(@language.id, @post.id), class:"btn btn-outline-dark " %>
+</div>
 <%= render "shared/footer" %>

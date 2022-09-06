@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
     @posts = Post.all
     @language = Language.find(params[:language_id])
@@ -27,18 +26,27 @@ class PostsController < ApplicationController
     @post.destroy
   end
 
+  def edit
+    @language = Language.find(params[:language_id])
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+  end
+
+
+
   def show
     @language = Language.find(params[:language_id])
     @posts = Post.all
     @post = Post.find(params[:id])
   end
 
-
-
   private
 
   def post_params
-    params.require(:post).permit( :title, :text).merge(user_id: current_user.id, language_id: params[:language_id])
+    params.require(:post).permit(:title, :text).merge(user_id: current_user.id, language_id: params[:language_id])
   end
-
 end

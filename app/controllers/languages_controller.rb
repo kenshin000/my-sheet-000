@@ -1,5 +1,4 @@
 class LanguagesController < ApplicationController
-
   def index
     @languages = Language.all
   end
@@ -22,13 +21,9 @@ class LanguagesController < ApplicationController
     @language = Language.find(params[:id])
   end
 
-
-
   private
 
   def language_params
     params.require(:language).permit(:name).merge(user_id: current_user.id)
   end
-
-
 end
