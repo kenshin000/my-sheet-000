@@ -60,7 +60,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= link_to '詳細',new_language_path, class:"btn btn-sm btn-outline-secondary", type:"button" %>
-                  <%= link_to  '投稿者のマイページ',"/users/#{current_user.id}", class:"btn btn-sm btn-outline-secondary", type:"button" %>
+                  <%= link_to  '投稿者のマイページ',user_path(language.user_id), class:"btn btn-sm btn-outline-secondary", type:"button" %>
                 </div>
                 <small class="text-muted"><%=  %></small>
               </div>

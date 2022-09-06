@@ -1,16 +1,16 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_action :set_post, only: [:edit, :show, :update, :destroy]
+  before_action :set_language, only: [:index, :new, :edit, :show, :create, :destroy]
   def index
     @posts = Post.all
-    @language = Language.find(params[:language_id])
   end
 
   def new
-    @language = Language.find(params[:language_id])
     @post = Post.new
   end
 
   def create
-    language = Language.find(params[:language_id])
     @post = Post.create(post_params)
     @post.user_id = current_user.id
     if @post.save
@@ -21,27 +21,18 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    language = Language.find(params[:language_id])
-    @post = Post.find(params[:id])
     @post.destroy
   end
 
   def edit
-    @language = Language.find(params[:language_id])
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     @post.update(post_params)
   end
 
-
-
   def show
-    @language = Language.find(params[:language_id])
     @posts = Post.all
-    @post = Post.find(params[:id])
   end
 
   private
@@ -49,4 +40,14 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :text).merge(user_id: current_user.id, language_id: params[:language_id])
   end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def set_language
+    @language = Language.find(params[:language_id])
+  end
+
+
 end
