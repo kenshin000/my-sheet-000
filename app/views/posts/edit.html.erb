@@ -1,0 +1,22 @@
+<%= render "shared/header" %>
+
+    <%= form_with(model: [@language, @post], local: true) do |f| %>
+  <div class="mb-3">
+  <p for="exampleFormControlInput1" class="form-label title_label">タイトル</p>
+  </div>
+  <%= f.text_area :title,  class:"form-control", id:"post_title", placeholder:"" %>
+<div class="mb-3">
+  <p for="exampleFormControlTextarea1" class="form-label title_label">本文</p>
+</div>
+    <%= f.text_area :text, class:"form-control sheet_text", id:"post_text", placeholder:"" %>
+<div class="d-grid gap-2 col-6 mx-auto">
+<%= f.submit "編集",class:"btn btn-outline-info" %>
+</div>
+    <% end %> 
+
+<%= link_to '戻る',language_post_path, class:"btn btn-outline-dark" %>
+    <div class="pull-right">
+<%= link_to '削除',language_post_path(@language.id, @post.id), method: :delete,data: {confirm: "投稿を削除しますか？"}, class:"btn btn-outline-dark" %>
+</div>
+
+<%= render "shared/footer" %>

@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+  .ing_tex{
+  font-size: 50px;
+}

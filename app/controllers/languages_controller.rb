@@ -1,7 +1,6 @@
 class LanguagesController < ApplicationController
-
   def index
-    @languages = Language.all
+    @languages = Language.order('created_at DESC')
   end
 
   def new
@@ -17,18 +16,9 @@ class LanguagesController < ApplicationController
     end
   end
 
-  def show
-    @languages = Language.order('created_at DESC')
-    @language = Language.find(params[:id])
-  end
-
-
-
   private
 
   def language_params
     params.require(:language).permit(:name).merge(user_id: current_user.id)
   end
-
-
 end

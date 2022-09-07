@@ -10,7 +10,6 @@
 
 
 has_many :languages
-has_many :comments
 has_many :posts
 
 ## languages テーブル
@@ -34,15 +33,3 @@ has_many :posts
 
 belongs_to :user
 belongs_to :language
-has_many :comments
-
-## comments テーブル
-
-| Column             | Type   | Options                  |
-| ------------------ | ------ | -----------              |
-| text               | text   | null: false              |
-| user     | references | null: false, foreign_key: true |
-| post     | references | null: false, foreign_key: true |
-
-belongs_to :user
-belongs_to :post
