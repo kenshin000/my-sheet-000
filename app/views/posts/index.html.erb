@@ -29,7 +29,7 @@
       <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light"><%= @language.name %></h1>
           <% if current_user.id == @language.user_id %>
-        <p><%= link_to '言語名の編集',edit_language_path(@language.id), class: "btn  btn-outline-primary my-2" %></p>
+        <p><%= link_to 'カテゴリー名の編集',edit_language_path(@language.id), class: "btn  btn-outline-primary my-2" %></p>
           <% end %>
       </div>
         <%= link_to '投稿の追加',new_language_post_path, class:"btn btn-outline-success btn-lg" %>

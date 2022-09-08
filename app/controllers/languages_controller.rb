@@ -1,6 +1,6 @@
 class LanguagesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
-  before_action :set_language, only: [ :new, :edit, :create, :destroy, :update]
+  before_action :set_language, only: [ :edit, :destroy, :update]
   before_action :limit_user, only: [:edit, :destroy,]
   def index
     @languages = Language.order('created_at DESC')
